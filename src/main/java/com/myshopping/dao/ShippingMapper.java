@@ -1,6 +1,9 @@
 package com.myshopping.dao;
 
 import com.myshopping.model.Shipping;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface ShippingMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +17,12 @@ public interface ShippingMapper {
     int updateByPrimaryKeySelective(Shipping record);
 
     int updateByPrimaryKey(Shipping record);
+
+    int deleteByUserIdShippingId(@Param("userId") Integer userId, @Param("shippingId") Integer shippingId);
+
+    int updateByShipping(Shipping shipping);
+
+    Shipping selectByShippingIdUserId(@Param("userId")Integer userId,@Param("shippingId") Integer shippingId);
+
+    List<Shipping> selectByUserId(@Param("userId")Integer userId);
 }
